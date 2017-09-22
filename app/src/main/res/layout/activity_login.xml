@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.zhy.autolayout.AutoRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/HuiBai"
+    tools:context="sh.com.water.ui.activity.LoginActivity">
+
+    <ImageView
+        android:id="@+id/logo"
+        android:layout_width="200px"
+        android:layout_height="200px"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="200px"
+        android:background="@mipmap/app_logo" />
+
+    <com.zhy.autolayout.AutoLinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/logo"
+        android:orientation="vertical">
+
+        <sh.com.water.utils.ClearEditText
+            android:id="@+id/login_ed_name"
+            android:layout_width="match_parent"
+            android:layout_height="120px"
+            android:layout_marginTop="30px"
+            android:background="@drawable/shape_ed_white"
+            android:gravity="center"
+            android:hint="@string/please_phone"
+            android:textColorHint="@color/AnHuang" />
+
+        <sh.com.water.utils.ClearEditText
+            android:id="@+id/login_ed_pwd"
+            android:layout_width="match_parent"
+            android:layout_height="120px"
+            android:layout_marginTop="30px"
+            android:background="@drawable/shape_ed_white"
+            android:gravity="center"
+            android:hint="@string/please_pwd"
+            android:inputType="textPassword"
+            android:textColorHint="@color/AnHuang" />
+
+        <com.zhy.autolayout.AutoRelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="100px"
+            android:gravity="center">
+
+            <com.nightonke.jellytogglebutton.JellyToggleButton
+                android:id="@+id/rem_pwd"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="20px"
+                android:gravity="center"
+                app:jtbJelly="active_tremble_body_fatty"
+                app:jtbLeftThumbColor="@color/red"
+                app:jtbRightTextTypeface="@string/jizhu_pwd"
+                app:jtbRightThumbColor="@color/Green" />
+
+            <TextView
+                android:id="@+id/Register"
+                android:layout_width="wrap_content"
+                android:layout_height="100px"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="30px"
+                android:gravity="center"
+                android:text="注册新用户"
+                android:textColor="@color/HuBlue" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="100px"
+                android:layout_marginRight="20px"
+                android:layout_toRightOf="@id/rem_pwd"
+                android:gravity="center"
+                android:text="@string/jizhu_pwd" />
+        </com.zhy.autolayout.AutoRelativeLayout>
+
+
+        <Button
+            android:id="@+id/bt_login"
+            android:layout_width="match_parent"
+            android:layout_height="150px"
+            android:layout_margin="30px"
+            android:background="@drawable/shape_but_login"
+            android:text="@string/Login"
+            android:textSize="15sp" />
+    </com.zhy.autolayout.AutoLinearLayout>
+
+    <TextView
+        android:id="@+id/WangJi_pwd"
+        android:layout_width="wrap_content"
+        android:layout_height="100px"
+        android:layout_alignParentBottom="true"
+        android:layout_margin="20px"
+        android:gravity="center"
+        android:text="忘记密码?"
+        android:textColor="@color/HuBlue" />
+</com.zhy.autolayout.AutoRelativeLayout>

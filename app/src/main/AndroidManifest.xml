@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="sh.com.water">
+
+    <!-- if you want to load images from the internet -->
+    <uses-permission android:name="android.permission.INTERNET" />
+    <!-- if you want to load images from a file OR from the internet -->
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <!-- 极光 -->
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
+    <application
+        android:name=".ui.MyApplication"
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <meta-data
+            android:name="design_width"
+            android:value="1080" />
+        <meta-data
+            android:name="design_height"
+            android:value="1920" />
+
+        <activity
+            android:name=".ui.activity.WelComeActivity"
+            android:theme="@android:style/Theme.NoTitleBar.Fullscreen">
+            >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".ui.activity.MainActivity" />
+        <activity android:name=".ui.activity.PresonCenterActivity" />
+        <activity android:name=".ui.activity.QueryPayActivity" />
+        <activity android:name=".ui.activity.NoticeActivity" />
+        <activity android:name=".ui.activity.FaultActivity" />
+        <activity android:name=".ui.activity.IllegaReportActivity" />
+        <activity android:name=".ui.activity.ComplaActivity" />
+        <activity android:name=".ui.activity.BusNewsActivity" />
+        <activity android:name=".ui.activity.BusoutActivity" />
+        <activity android:name=".ui.activity.BusGuideActivity" />
+        <activity android:name=".ui.activity.WaterbaikeActivity" />
+        <activity android:name=".ui.activity.BusManagerActivity" />
+        <activity android:name=".ui.activity.RegisterActivity" />
+        <activity android:name=".ui.activity.LoginActivity"></activity>
+
+        <meta-data
+            android:name="JPUSH_APPKEY"
+            android:value="82af948f865be51f60401060" /> <!--  </>值来自开发者平台取得的AppKey-->
+    </application>
+
+</manifest>

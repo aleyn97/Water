@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/HuiBai"
+    android:orientation="vertical"
+    tools:context="sh.com.water.ui.activity.RegisterActivity">
+
+    <LinearLayout
+        android:id="@+id/lin_code"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <sh.com.water.utils.ClearEditText
+            android:id="@+id/res_phone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:hint="@string/please_phone" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp">
+
+            <sh.com.water.utils.ClearEditText
+                android:id="@+id/yan_Z_ma"
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_margin="5dp"
+                android:hint="验证码" />
+
+            <Button
+                android:id="@+id/huo_qu"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_margin="5dp"
+                android:layout_weight="2"
+                android:background="@color/HuBlue"
+                android:text="获取验证码" />
+        </RelativeLayout>
+
+        <Button
+            android:id="@+id/bt_zhuce"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:background="@drawable/shape_but_login"
+            android:text="注册" />
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:id="@+id/lin_pwd"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:visibility="gone">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="请设置密码" />
+
+        <sh.com.water.utils.ClearEditText
+            android:id="@+id/set_pwd"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="请输入密码"
+            android:inputType="textPassword" />
+
+        <sh.com.water.utils.ClearEditText
+            android:id="@+id/set_pwd2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="请重复输入密码"
+            android:inputType="textPassword" />
+
+        <Button
+            android:id="@+id/pwd_ok"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/shape_but_login"
+            android:text="确定" />
+    </LinearLayout>
+
+</LinearLayout>

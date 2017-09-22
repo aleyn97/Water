@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#FF4081</color>
+    <color name="White">#ffffff</color>
+    <color name="HuiBai">#f2f2f2</color>
+    <color name="HuiHei">#838383</color>
+    <color name="red">#f50404</color>
+    <color name="Black">#050505</color>
+    <color name="Black_1">#383838</color>
+    <color name="HuBlue">#47a1fa</color>
+    <color name="AnHuang">#68b1a7</color>
+    <color name="Green">#3af193</color>
+</resources>
