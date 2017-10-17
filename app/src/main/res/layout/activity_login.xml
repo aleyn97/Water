@@ -19,24 +19,26 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/logo"
+        android:layout_marginLeft="50px"
+        android:layout_marginRight="50px"
         android:orientation="vertical">
 
         <sh.com.water.utils.ClearEditText
             android:id="@+id/login_ed_name"
+            style="@style/my_edittext_style"
             android:layout_width="match_parent"
             android:layout_height="120px"
             android:layout_marginTop="30px"
-            android:background="@drawable/shape_ed_white"
             android:gravity="center"
             android:hint="@string/please_phone"
             android:textColorHint="@color/AnHuang" />
 
         <sh.com.water.utils.ClearEditText
             android:id="@+id/login_ed_pwd"
+            style="@style/my_edittext_style"
             android:layout_width="match_parent"
             android:layout_height="120px"
             android:layout_marginTop="30px"
-            android:background="@drawable/shape_ed_white"
             android:gravity="center"
             android:hint="@string/please_pwd"
             android:inputType="textPassword"
@@ -55,8 +57,7 @@
                 android:layout_marginLeft="20px"
                 android:gravity="center"
                 app:jtbJelly="active_tremble_body_fatty"
-                app:jtbLeftThumbColor="@color/red"
-                app:jtbRightTextTypeface="@string/jizhu_pwd"
+                app:jtbLeftThumbColor="@color/White"
                 app:jtbRightThumbColor="@color/Green" />
 
             <TextView

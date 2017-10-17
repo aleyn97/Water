@@ -7,6 +7,7 @@ import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import com.alibaba.fastjson.JSONObject;
+import com.blankj.utilcode.util.RegexUtils;
 import com.lzy.okhttputils.OkHttpUtils;
 import com.lzy.okhttputils.callback.StringCallback;
 
@@ -61,8 +62,8 @@ public class RegisterActivity extends BaseActivity {
         Code = yanZMa.getText().toString();
         switch (view.getId()) {
             case R.id.huo_qu:
-                if (phone.length() != 11) {
-                    Toast.makeText(RegisterActivity.this, "手机号不正确或为空", Toast.LENGTH_SHORT).show();
+                if (!RegexUtils.isMobileExact(phone)) {
+                    Toast.makeText(RegisterActivity.this, "手机号格式不正确", Toast.LENGTH_SHORT).show();
                 } else {
                     request(phone);
                 }

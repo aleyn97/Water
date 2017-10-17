@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="sh.com.water.ui.activity.OrderQueryActivity">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:background="@color/HuiBai"
+        android:gravity="center_vertical">
+
+        <TextView
+            android:id="@+id/star"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="20dp"
+            android:gravity="center"
+            android:text="起始：" />
+
+        <TextView
+            android:id="@+id/star_time"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_toRightOf="@id/star"
+            android:gravity="center"
+            android:text="2016-01-01" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_centerHorizontal="true"
+            android:gravity="center"
+            android:text="(点击日期选择)"
+            android:textColor="@color/red"
+            android:textSize="10sp" />
+
+        <TextView
+            android:id="@+id/end_time"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="20dp"
+            android:gravity="center"
+            android:text="2017-01-01" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_toLeftOf="@id/end_time"
+            android:gravity="center"
+            android:text="截止：" />
+    </RelativeLayout>
+</LinearLayout>

@@ -12,6 +12,8 @@ import android.view.ViewGroup;
 import android.widget.HorizontalScrollView;
 import android.widget.LinearLayout;
 
+import com.blankj.utilcode.util.ScreenUtils;
+
 
 public class SlidingMenu extends HorizontalScrollView {
     /**
@@ -33,7 +35,7 @@ public class SlidingMenu extends HorizontalScrollView {
 
     public SlidingMenu(Context context, AttributeSet attrs) {
         super(context, attrs);
-        mScreenWidth = ScreenUtils.getScreenWidth(context);
+        mScreenWidth = ScreenUtils.getScreenWidth();
     }
 
     @Override

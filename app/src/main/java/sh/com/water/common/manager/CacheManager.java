@@ -5,6 +5,8 @@ import android.os.Environment;
 import android.support.compat.BuildConfig;
 import android.text.TextUtils;
 
+import com.blankj.utilcode.util.LogUtils;
+
 import java.io.BufferedOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
@@ -15,8 +17,6 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.OptionalDataException;
 import java.io.StreamCorruptedException;
-
-import sh.com.water.utils.LogUtils;
 
 /**
  * Created by jayli on 2017/5/3 0003.

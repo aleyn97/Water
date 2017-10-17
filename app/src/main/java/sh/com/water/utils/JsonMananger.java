@@ -6,6 +6,8 @@ import com.alibaba.fastjson.util.TypeUtils;
 
 import java.util.List;
 
+import okhttp3.Response;
+
 /**
  * Created by Administrator on 2017/7/14.
  */
@@ -50,4 +52,6 @@ public class JsonMananger {
         String result = JSON.toJSONString(obj);
         return result;
     }
+
+
 }

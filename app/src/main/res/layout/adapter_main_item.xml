@@ -1,22 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<com.zhy.autolayout.AutoRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:paddingBottom="4dp">
+    android:gravity="center"
+    android:layout_height="match_parent">
+
 
     <ImageView
         android:id="@+id/ItemImage"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
+        android:layout_width="130px"
+        android:layout_height="130px"
         android:layout_centerHorizontal="true"
+        android:layout_margin="5px"
         android:background="@drawable/shape_but_fen" />
 
     <ImageView
         android:id="@+id/src"
-        android:layout_width="32dp"
-        android:layout_height="32dp"
+        android:layout_width="90px"
+        android:layout_height="90px"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="9dp" />
+        android:layout_marginTop="22.5px" />
 
     <TextView
         android:id="@+id/ItemText"
@@ -24,5 +26,6 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/ItemImage"
         android:layout_centerHorizontal="true"
-        android:text="Text" />
-</RelativeLayout>
+        android:text="Text"
+        android:textSize="25px" />
+</com.zhy.autolayout.AutoRelativeLayout>

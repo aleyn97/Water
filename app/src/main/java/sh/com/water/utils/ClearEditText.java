@@ -1,6 +1,7 @@
 package sh.com.water.utils;
 
 import android.content.Context;
+import android.graphics.Rect;
 import android.graphics.drawable.Drawable;
 import android.support.v7.widget.AppCompatEditText;
 import android.text.Editable;
@@ -55,6 +56,7 @@ public class ClearEditText extends AppCompatEditText implements View.OnFocusChan
 
         mClearDrawable.setBounds(0, 0, mClearDrawable.getIntrinsicWidth(), mClearDrawable.getIntrinsicHeight());
         //默认设置隐藏图标
+        setPadding(20, 0, 0, 0);
         setClearIconVisible(false);
         //设置焦点改变的监听
         setOnFocusChangeListener(this);
@@ -92,8 +94,10 @@ public class ClearEditText extends AppCompatEditText implements View.OnFocusChan
     public void onFocusChange(View v, boolean hasFocus) {
         this.hasFoucs = hasFocus;
         if (hasFocus) {
+            setBackgroundResource(R.drawable.shape_ed_blue);
             setClearIconVisible(getText().length() > 0);
         } else {
+            setBackgroundResource(R.drawable.shape_ed_hui);
             setClearIconVisible(false);
         }
     }
@@ -119,6 +123,7 @@ public class ClearEditText extends AppCompatEditText implements View.OnFocusChan
                               int after) {
         if (hasFoucs) {
             setClearIconVisible(s.length() > 0);
+            setBackgroundResource(R.drawable.shape_ed_blue);
         }
     }
 
@@ -155,4 +160,5 @@ public class ClearEditText extends AppCompatEditText implements View.OnFocusChan
         translateAnimation.setDuration(1000);
         return translateAnimation;
     }
+
 }

@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/HuiBai"
+    android:orientation="vertical"
+    tools:context="sh.com.water.ui.activity.BusGuildFoldActivity">
+
+    <ImageView
+        android:id="@+id/user_fold_img"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_toEndOf="@+id/textView"
+        android:layout_toRightOf="@+id/textView"
+        android:scaleType="centerInside"
+        android:src="@mipmap/app_logo" />
+
+    <TextView
+        android:id="@+id/user_fold_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/user_fold_img"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"
+        android:background="@color/AnHuang"
+        android:text="特困低保户水量优惠登记流程" />
+
+    <RelativeLayout
+        android:id="@+id/reltv_bottom"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="20dp">
+
+        <TextView
+            android:id="@+id/user_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="10dp"
+            android:text="死是否" />
+
+        <TextView
+            android:id="@+id/faburen"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_toLeftOf="@id/user_name"
+            android:text="发布人：" />
+
+
+        <TextView
+            android:id="@+id/time_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_below="@id/faburen"
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="10dp"
+            android:text="20170202" />
+
+        <TextView
+            android:id="@+id/time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/faburen"
+            android:layout_marginTop="10dp"
+            android:layout_toLeftOf="@id/time_text"
+            android:text="时间：" />
+    </RelativeLayout>
+
+
+    <TextView
+        android:id="@+id/count_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/reltv_bottom"
+        android:layout_below="@id/user_fold_title"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="10dp"
+        android:scrollbars="vertical"
+        android:singleLine="false"
+        android:text="1.提交特困低保证\n2.填写《特困低保户水量优惠申请表》\n3.核实用户提交的资料\n4.加盖公章\n5.完" />
+
+</RelativeLayout>

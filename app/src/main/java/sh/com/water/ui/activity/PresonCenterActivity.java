@@ -6,7 +6,8 @@ import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
+
+import com.blankj.utilcode.util.ToastUtils;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -42,6 +43,7 @@ public class PresonCenterActivity extends BaseActivity {
         setContentView(R.layout.activity_preson_center);
         ButterKnife.bind(this);
         setTitle(getString(R.string.loginTitle));
+        app = (MyApplication) getApplication();
         initData();
     }
 
@@ -58,39 +60,48 @@ public class PresonCenterActivity extends BaseActivity {
     private void listItemOnclick(int i) {
         switch (i) {
             case 0:
-                Toast.makeText(PresonCenterActivity.this, app.getUsername(), Toast.LENGTH_SHORT).show();
+                Jump(PassWordActivity.class);
                 break;
             case 1:
-                Toast.makeText(PresonCenterActivity.this, "这是绑定", Toast.LENGTH_SHORT).show();
+                Jump(BindUserActivity.class);
                 break;
             case 2:
-                Toast.makeText(PresonCenterActivity.this, "这是订单", Toast.LENGTH_SHORT).show();
+                startActivity(OrderQueryActivity.class);
+//                Jump(OrderQueryActivity.class);
                 break;
             case 3:
-                Toast.makeText(PresonCenterActivity.this, "这是申请", Toast.LENGTH_SHORT).show();
+//                Jump(BindUserActivity.class);
                 break;
             case 4:
-                Toast.makeText(PresonCenterActivity.this, "这是推荐", Toast.LENGTH_SHORT).show();
+//                Jump(BindUserActivity.class);
                 break;
             case 5:
-                Toast.makeText(PresonCenterActivity.this, "这是问卷", Toast.LENGTH_SHORT).show();
+//                Jump(BindUserActivity.class);
                 break;
             case 6:
-                Toast.makeText(PresonCenterActivity.this, "这是建议", Toast.LENGTH_SHORT).show();
+                startActivity(ComplaActivity.class);
                 break;
             case 7:
-                Toast.makeText(PresonCenterActivity.this, "这是版本", Toast.LENGTH_SHORT).show();
+                startActivity(VersionActivity.class);
+//                ToastUtils.showShort("已是最新版本");
                 break;
         }
     }
 
+    protected void Jump(Class<?> activity) {
+        if (!app.getUsername().equals("")) {
+            startActivity(activity);
+        } else {
+            ToastUtils.showShort("您还未登录！");
+        }
+    }
+
     private void initData() {
-        app = (MyApplication) getApplication();
         int[] image1 = new int[]{R.mipmap.login_me, R.mipmap.login_band,
                 R.mipmap.login_order_query, R.mipmap.login_shenqing,
                 R.mipmap.login_tuijian, R.mipmap.login_diaocha,
                 R.mipmap.login_jianyi, R.mipmap.login_huanyu};
-        String[] text1 = new String[]{"个人信息", "用户绑定", "订单查询", "我的业务申请进度",
+        String[] text1 = new String[]{"密码管理", "用户绑定", "订单查询", "我的业务申请进度",
                 "推荐人", "问卷调查", "投诉建议", "关于版本"};
         mList = new ArrayList<>();
         for (int i = 0; i < image1.length; i++) {
@@ -122,6 +133,5 @@ public class PresonCenterActivity extends BaseActivity {
                 break;
         }
     }
-
 
 }

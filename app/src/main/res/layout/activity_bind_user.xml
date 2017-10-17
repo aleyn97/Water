@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/HuiBai"
+    android:orientation="vertical"
+    tools:context="sh.com.water.ui.activity.BindUserActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:orientation="vertical">
+
+        <sh.com.water.utils.ClearEditText
+            android:id="@+id/ed_bind_userId"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_margin="5dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/shape_ed_hui"
+            android:hint="用户编号" />
+
+
+        <sh.com.water.utils.ClearEditText
+            android:id="@+id/ed_bind_name"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_margin="5dp"
+            android:background="@drawable/shape_ed_hui"
+            android:hint="用户名称" />
+
+        <sh.com.water.utils.ClearEditText
+            android:id="@+id/ed_bind_IDCade"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_margin="5dp"
+            android:background="@drawable/shape_ed_hui"
+            android:hint="身份证号" />
+
+        <Button
+            android:id="@+id/bt_user"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:background="@drawable/shape_but_login"
+            android:text="绑定" />
+    </LinearLayout>
+</LinearLayout>

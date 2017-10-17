@@ -10,11 +10,33 @@
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <!-- 地图 -->
+    <!-- 用于进行网络定位 -->
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <!-- 用于访问GPS定位 -->
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <!-- 用于获取运营商信息，用于支持提供运营商信息相关的接口 -->
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <!-- 用于访问wifi网络信息，wifi信息会用于进行网络定位 -->
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <!-- 用于获取wifi的获取权限，wifi信息会用来进行网络定位 -->
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
+    <!-- 用于访问网络，网络定位需要上网 -->
+    <uses-permission android:name="android.permission.INTERNET" />
+    <!-- 用于读取手机当前的状态 -->
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <!-- 用于写入缓存数据到扩展存储卡 -->
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <!-- 用于申请调用A-GPS模块 -->
+    <uses-permission android:name="android.permission.ACCESS_LOCATION_EXTRA_COMMANDS" />
+    <!-- 用于申请获取蓝牙信息进行室内定位 -->
+    <uses-permission android:name="android.permission.BLUETOOTH" />
+    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
 
     <application
         android:name=".ui.MyApplication"
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@mipmap/app_icon"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
@@ -25,6 +47,12 @@
         <meta-data
             android:name="design_height"
             android:value="1920" />
+        <meta-data
+            android:name="JPUSH_APPKEY"
+            android:value="82af948f865be51f60401060" /> <!-- </>值来自开发者平台取得的AppKey -->
+        <meta-data
+            android:name="com.amap.api.v2.apikey"
+            android:value="249a8403a60edde8666b3cc1e61498f4" />
 
         <activity
             android:name=".ui.activity.WelComeActivity"
@@ -49,11 +77,15 @@
         <activity android:name=".ui.activity.WaterbaikeActivity" />
         <activity android:name=".ui.activity.BusManagerActivity" />
         <activity android:name=".ui.activity.RegisterActivity" />
-        <activity android:name=".ui.activity.LoginActivity"></activity>
-
-        <meta-data
-            android:name="JPUSH_APPKEY"
-            android:value="82af948f865be51f60401060" /> <!--  </>值来自开发者平台取得的AppKey-->
+        <activity android:name=".ui.activity.LoginActivity" />
+        <activity android:name=".ui.activity.BindUserActivity" />
+        <activity android:name=".ui.activity.MapActivity" />
+        <activity android:name=".ui.activity.PassWordActivity" />
+        <activity android:name=".ui.activity.BusGuildFoldActivity" />
+        <activity android:name=".ui.activity.WaterBaikeFoldActivity" />
+        <activity android:name=".ui.activity.StopWaterActivity" />
+        <activity android:name=".ui.activity.OrderQueryActivity" />
+        <activity android:name=".ui.activity.VersionActivity"></activity>
     </application>
 
 </manifest>

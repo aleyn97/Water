@@ -1,16 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<com.zhy.autolayout.AutoLinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <ImageView
-        android:id="@+id/img_text"
-        android:layout_width="30dp"
-        android:layout_height="30dp" />
-
-    <TextView
-        android:id="@+id/tv_text"
+    <com.zhy.autolayout.AutoLinearLayout
         android:layout_width="match_parent"
-        android:layout_height="30dp"
-        android:gravity="center" />
-</LinearLayout>
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10px"
+        android:background="@color/White">
+
+        <ImageView
+            android:id="@+id/img_text"
+            android:layout_width="100px"
+            android:layout_height="100px"
+            android:layout_margin="5px" />
+
+        <TextView
+            android:id="@+id/tv_text"
+            android:layout_width="match_parent"
+            android:layout_height="100px"
+            android:layout_margin="5px"
+            android:gravity="center_vertical" />
+    </com.zhy.autolayout.AutoLinearLayout>
+</com.zhy.autolayout.AutoLinearLayout>

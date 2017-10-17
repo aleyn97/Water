@@ -1,5 +1,6 @@
 package sh.com.water.common;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Build;
@@ -8,7 +9,6 @@ import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.app.AppCompatDelegate;
 import android.transition.Fade;
-import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,10 +17,8 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.ViewFlipper;
-
 import sh.com.water.R;
 import sh.com.water.common.manager.ActivityManager;
-import sh.com.water.utils.SlidingMenu;
 
 /**
  * Created by Administrator on 2017/5/2 0002.
@@ -30,7 +28,6 @@ public abstract class BaseActivity extends AppCompatActivity {
     private static final int SLIDE_TRANSITION_TIME = 1 * 1000;//滑动转场的时间
 
     public Fade mFadeTransition;
-
     protected Context mContext;
     private ViewFlipper mContentView;
     protected RelativeLayout layout_head;
@@ -46,6 +43,7 @@ public abstract class BaseActivity extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         super.setContentView(R.layout.activity_base);
+
         initView();
         //5.0+的专场动画
         setupWindowAnimation();
