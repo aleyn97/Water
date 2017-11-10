@@ -4,11 +4,13 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.KeyEvent;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.GridView;
 import android.widget.ListView;
 
+import com.blankj.utilcode.util.ToastUtils;
 import com.lzy.okhttputils.OkHttpUtils;
 import com.lzy.okhttputils.callback.StringCallback;
 import com.youth.banner.Banner;
@@ -32,10 +34,10 @@ import okhttp3.Response;
 import sh.com.water.R;
 import sh.com.water.adapter.MainButAdapter;
 import sh.com.water.adapter.MainNoticAdapter;
-import sh.com.water.adapter.StopWaterNoticAdapter;
 import sh.com.water.bean.StopWaterNoticBean;
 import sh.com.water.common.BaseActivity;
 import sh.com.water.common.ServerConfig;
+import sh.com.water.ui.MyApplication;
 import sh.com.water.utils.GlideImageLoader;
 import sh.com.water.utils.JsonMananger;
 
@@ -54,6 +56,8 @@ public class MainActivity extends BaseActivity {
     private List<StopWaterNoticBean.NoticeInfoBean> mList = new ArrayList<>();
     private StopWaterNoticBean sysmentNoticBean;
     private MainNoticAdapter mListAdapter;
+    private long mExitTime = 0;
+    MyApplication app;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -86,6 +90,7 @@ public class MainActivity extends BaseActivity {
     }
 
     private void initDate() {
+        app = (MyApplication) getApplication();
         int[] imageId = new int[]{R.drawable.shape_but_fen, R.drawable.shape_but_green,
                 R.drawable.shape_but_huang, R.drawable.shape_but_zi,
                 R.drawable.shape_but_huang, R.drawable.shape_but_green,
@@ -178,25 +183,25 @@ public class MainActivity extends BaseActivity {
     private void Onclick(int i) {
         switch (i) {
             case 0:
-                TiaoZhuan(QueryPayActivity.class);
+                startActivity(QueryPayActivity.class);
                 break;
             case 1:
-                TiaoZhuan(FaultActivity.class);
+                startActivity(FaultActivity.class);
                 break;
             case 2:
-                TiaoZhuan(IllegaReportActivity.class);
+                LoginIF(IllegaReportActivity.class);
                 break;
             case 3:
-                TiaoZhuan(ComplaActivity.class);
+                LoginIF(ComplaActivity.class);
                 break;
             case 4:
-                TiaoZhuan(BusoutActivity.class);
+                startActivity(BusoutActivity.class);
                 break;
             case 5:
-                TiaoZhuan(BusGuideActivity.class);
+                startActivity(BusGuideActivity.class);
                 break;
             case 6:
-                TiaoZhuan(WaterbaikeActivity.class);
+                startActivity(WaterbaikeActivity.class);
                 break;
             case 7:
                 showNormalDialog();
@@ -204,9 +209,12 @@ public class MainActivity extends BaseActivity {
         }
     }
 
-    public void TiaoZhuan(Class<?> cls) {
-        intent = new Intent(this, cls);
-        startActivity(intent);
+    private void LoginIF(Class<?> cls) {
+        if (!app.getUsername().equals("")) {
+            startActivity(cls);
+        } else {
+            ToastUtils.showShort("您还未登录，不能进行该操作！");
+        }
     }
 
     private void showNormalDialog() {
@@ -226,4 +234,27 @@ public class MainActivity extends BaseActivity {
     public void onViewClicked() {
         startActivity(NoticeActivity.class);
     }
+
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        //1.点击返回键条件成立
+        if (keyCode == KeyEvent.KEYCODE_BACK
+                && event.getAction() == KeyEvent.ACTION_DOWN
+                && event.getRepeatCount() == 0) {
+            //2.点击的时间差如果大于2000，则提示用户点击两次退出
+            if (System.currentTimeMillis() - mExitTime > 2000) {
+                //3.保存当前时间
+                mExitTime = System.currentTimeMillis();
+                //4.提示
+                ToastUtils.showShort("再按一次退出应用");
+            } else {
+                //5.点击的时间差小于2000，退出。
+                finish();
+                System.exit(0);
+            }
+            return true;
+        }
+        return false;
+    }
+
 }

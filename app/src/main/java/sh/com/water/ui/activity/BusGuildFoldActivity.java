@@ -21,6 +21,7 @@ import sh.com.water.R;
 import sh.com.water.bean.BusOutFoldBean;
 import sh.com.water.common.BaseActivity;
 import sh.com.water.common.ServerConfig;
+import sh.com.water.utils.DatetoStringFormt;
 import sh.com.water.utils.JsonMananger;
 import sh.com.water.utils.LoadingDialog;
 
@@ -80,7 +81,6 @@ public class BusGuildFoldActivity extends BaseActivity {
         userName.setText(busOutFoldBean.getGuideInfo().getStaff_Name());
         countText.setMovementMethod(ScrollingMovementMethod.getInstance());
         countText.setText(busOutFoldBean.getGuideInfo().getGuide_Content());
-        timeText.setText(busOutFoldBean.getGuideInfo().getGuide_Time() + "");
-
+        timeText.setText(DatetoStringFormt.StringToStrLong(busOutFoldBean.getGuideInfo().getGuide_Time()+""));
     }
 }

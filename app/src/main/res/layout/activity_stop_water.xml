@@ -14,16 +14,19 @@
         android:layout_margin="20dp"
         android:background="@color/HuBlue"
         android:padding="5dp"
-        android:text="停水公告" />
+        android:text="停水公告"
+        android:visibility="invisible" />
 
     <RelativeLayout
+        android:id="@+id/rel_stop_water"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@id/gonggao"
         android:layout_marginBottom="10dp"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
-        android:background="@drawable/shape_recview_bag">
+        android:background="@drawable/shape_recview_bag"
+        android:visibility="invisible">
 
         <TextView
             android:id="@+id/stop_dea_title"
@@ -32,7 +35,7 @@
             android:layout_centerHorizontal="true"
             android:layout_marginTop="20dp"
             android:background="@color/AnHuang"
-            android:text="特困低保户水量优惠登记流程" />
+            android:text="" />
 
         <RelativeLayout
             android:id="@+id/bottom_rel"
@@ -46,8 +49,7 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"
                 android:layout_marginRight="20dp"
-                android:layout_marginTop="10dp"
-                android:text="死是否" />
+                android:layout_marginTop="10dp" />
 
             <TextView
                 android:id="@+id/faburen"
@@ -64,8 +66,7 @@
                 android:layout_alignParentRight="true"
                 android:layout_below="@id/faburen"
                 android:layout_marginRight="20dp"
-                android:layout_marginTop="10dp"
-                android:text="20170202" />
+                android:layout_marginTop="10dp" />
 
             <TextView
                 android:id="@+id/time"
@@ -87,8 +88,7 @@
             android:layout_marginLeft="20dp"
             android:layout_marginTop="10dp"
             android:scrollbars="vertical"
-            android:singleLine="false"
-            android:text="提交特困低保证\r\n2.填写《特困低保户水量优惠申请表》\r\n3.核实用户提交的资料\r\n4.加盖公章\r\n5.完" />
+            android:singleLine="false" />
 
     </RelativeLayout>
 </RelativeLayout>

@@ -67,7 +67,7 @@
         <activity android:name=".ui.activity.MainActivity" />
         <activity android:name=".ui.activity.PresonCenterActivity" />
         <activity android:name=".ui.activity.QueryPayActivity" />
-        <activity android:name=".ui.activity.NoticeActivity" />
+        <activity android:name=".ui.activity.MyBusStateActivity" />
         <activity android:name=".ui.activity.FaultActivity" />
         <activity android:name=".ui.activity.IllegaReportActivity" />
         <activity android:name=".ui.activity.ComplaActivity" />
@@ -85,7 +85,10 @@
         <activity android:name=".ui.activity.WaterBaikeFoldActivity" />
         <activity android:name=".ui.activity.StopWaterActivity" />
         <activity android:name=".ui.activity.OrderQueryActivity" />
-        <activity android:name=".ui.activity.VersionActivity"></activity>
+        <activity android:name=".ui.activity.VersionActivity" />
+        <activity android:name=".ui.activity.NoticeActivity" />
+        <activity android:name=".ui.activity.IllegaDetilseActivity" />
+        <activity android:name=".ui.activity.ComplainDetilseActivity"></activity>
     </application>
 
 </manifest>

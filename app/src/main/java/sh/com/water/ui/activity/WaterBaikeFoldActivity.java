@@ -2,9 +2,12 @@ package sh.com.water.ui.activity;
 
 import android.os.Bundle;
 import android.text.method.ScrollingMovementMethod;
+import android.view.View;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.blankj.utilcode.util.LogUtils;
 import com.lzy.okhttputils.OkHttpUtils;
 import com.lzy.okhttputils.callback.StringCallback;
 import com.squareup.picasso.Picasso;
@@ -20,6 +23,7 @@ import sh.com.water.R;
 import sh.com.water.bean.WaterBaikeFoldBean;
 import sh.com.water.common.BaseActivity;
 import sh.com.water.common.ServerConfig;
+import sh.com.water.utils.DatetoStringFormt;
 import sh.com.water.utils.JsonMananger;
 import sh.com.water.utils.LoadingDialog;
 
@@ -35,6 +39,8 @@ public class WaterBaikeFoldActivity extends BaseActivity {
     TextView baikeName;
     @BindView(R.id.baike_time_text)
     TextView baikeTimeText;
+    @BindView(R.id.rel_count)
+    RelativeLayout relCount;
     private WaterBaikeFoldBean waterBaikeFoldBean;
     private List<WaterBaikeFoldBean.WikiInfoBean> mList = new ArrayList<>();
 
@@ -58,8 +64,12 @@ public class WaterBaikeFoldActivity extends BaseActivity {
                     public void onSuccess(String s, Call call, Response response) {
                         waterBaikeFoldBean = JsonMananger.jsonToBean(s, WaterBaikeFoldBean.class);
                         mList.add(waterBaikeFoldBean.getWikiInfo());
-                        initViews();
                         LoadingDialog.closeDialog();
+                        if (!mList.isEmpty()) {
+                            initViews();
+                        } else {
+                            relCount.setVisibility(View.INVISIBLE);
+                        }
                     }
 
                     @Override
@@ -78,6 +88,6 @@ public class WaterBaikeFoldActivity extends BaseActivity {
         countText.setMovementMethod(ScrollingMovementMethod.getInstance());
         countText.setText(waterBaikeFoldBean.getWikiInfo().getWiki_Content());
         baikeName.setText(waterBaikeFoldBean.getWikiInfo().getStaff_Name());
-        baikeTimeText.setText(waterBaikeFoldBean.getWikiInfo().getWiki_Time() + "");
+        baikeTimeText.setText(DatetoStringFormt.StringToStrLong(waterBaikeFoldBean.getWikiInfo().getWiki_Time() + ""));
     }
 }

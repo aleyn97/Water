@@ -5,7 +5,7 @@ package sh.com.water.common;
  */
 
 public class ServerConfig {
-    public static final String IP = "http://192.168.1.119:8080";
+    public static final String IP = "http://120.76.137.198:9090";
     public static final String IP_WAI = "http://120.76.137.198:9090";
     public static final String IP_NEI = "http://192.168.1.119:8080";
     public static final String PHONE_IF_URL = IP + "/userlogin/regphone.html";
@@ -23,4 +23,8 @@ public class ServerConfig {
     public static final String WATER_BAIKE_FOLD = IP + "/hold/knowledge/WikiInfoByID.html";
     public static final String STOP_WATER_DETIAL = IP + "/hold/knowledge/NoticeInfoByID.html";
     public static final String BUS_OUT_FOLD = IP + "/hold/knowledge/PayOfficeInfoByID.html";
+    public static final String ILLEGA_LIST = IP + "/hold/operate/violationlist.html";
+    public static final String ILLEGA_LIST_DETILES = IP + "/hold/operate/violationinfo.html";
+    public static final String COMPLAINT_LIST = IP + "/hold/operate/complaintslist.html";
+    public static final String COMPLAINT_LIST_DETILES = IP + "/hold/operate/complaintsinfo.html";
 }

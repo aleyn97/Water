@@ -55,6 +55,29 @@
     <com.zhy.autolayout.AutoLinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginRight="30px">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10px"
+            android:text="用户编号："
+            android:textSize="40px" />
+
+        <sh.com.water.utils.ClearEditText
+            android:id="@+id/ed_number"
+            android:layout_width="match_parent"
+            android:layout_height="90px"
+            android:layout_margin="10px"
+            android:background="@drawable/shape_ed_hui"
+            android:hint="用户编号"
+            android:textSize="40px" />
+
+    </com.zhy.autolayout.AutoLinearLayout>
+
+    <com.zhy.autolayout.AutoLinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:layout_marginRight="30px"
         android:layout_marginTop="10px">
 

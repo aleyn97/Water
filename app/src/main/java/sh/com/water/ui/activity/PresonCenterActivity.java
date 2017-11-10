@@ -66,11 +66,10 @@ public class PresonCenterActivity extends BaseActivity {
                 Jump(BindUserActivity.class);
                 break;
             case 2:
-                startActivity(OrderQueryActivity.class);
-//                Jump(OrderQueryActivity.class);
+                Jump(OrderQueryActivity.class);
                 break;
             case 3:
-//                Jump(BindUserActivity.class);
+                Jump(MyBusStateActivity.class);
                 break;
             case 4:
 //                Jump(BindUserActivity.class);

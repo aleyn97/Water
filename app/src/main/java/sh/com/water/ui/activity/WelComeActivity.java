@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Handler;
 import android.os.Bundle;
+import android.view.KeyEvent;
 
 import sh.com.water.R;
 
@@ -22,5 +23,11 @@ public class WelComeActivity extends Activity {
                 WelComeActivity.this.finish();
             }
         }, 3000);
+    }
+
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+
+        return false;
     }
 }

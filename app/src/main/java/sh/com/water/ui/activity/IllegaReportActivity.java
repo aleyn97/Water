@@ -2,7 +2,6 @@ package sh.com.water.ui.activity;
 
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.view.View;
@@ -31,6 +30,7 @@ import sh.com.water.R;
 import sh.com.water.adapter.PhotoAdapter;
 import sh.com.water.common.BaseActivity;
 import sh.com.water.common.ServerConfig;
+import sh.com.water.ui.MyApplication;
 import sh.com.water.utils.ClearEditText;
 import sh.com.water.utils.ImageDeal;
 import sh.com.water.utils.LoadingDialog;
@@ -40,14 +40,13 @@ public class IllegaReportActivity extends BaseActivity {
     public static final int IMAGE_PICKER = 1004;
     @BindView(R.id.jubao_name)
     ClearEditText name;
-    @BindView(R.id.jubao_phone)
-    ClearEditText phone;
     @BindView(R.id.jubao_address)
     ClearEditText address;
     @BindView(R.id.jubao_input_explain)
     ClearEditText count;
     @BindView(R.id.pic_gridView)
     GridView gridView;
+    MyApplication app;
 
     private PhotoAdapter adapter;
     private List<ClearEditText> edList = new ArrayList<>();
@@ -63,6 +62,7 @@ public class IllegaReportActivity extends BaseActivity {
     }
 
     private void initData() {
+        app = (MyApplication) getApplication();
         adapter = new PhotoAdapter(mList, this, gridView);
         gridView.setAdapter(adapter);
         gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -102,18 +102,23 @@ public class IllegaReportActivity extends BaseActivity {
             if (mList.size() > 0) {
                 Map<String, String> map = new HashMap<>();
                 map.put("ViolationName", name.getText().toString());
-                map.put("ViolationPhone", phone.getText().toString());
+                map.put("ViolationPhone", app.getUsername());
                 map.put("ViolationSite", address.getText().toString());
                 map.put("ViolationContent", count.getText().toString());
                 String Pic = "";
                 for (int i = 0; i < mList.size(); i++) {
-                    if (Pic.equals("")) {
-                        Pic = ImageDeal.convertIconToString(BitmapFactory.decodeFile(mList.get(i).path));
-                    } else {
-                        Pic = Pic + "," + ImageDeal.convertIconToString(BitmapFactory.decodeFile(mList.get(i).path));
+                    try {
+                        String photo = ImageDeal.encodeBase64File(mList.get(i).path);
+                        if (Pic.equals("")) {
+                            Pic = photo;
+                        } else {
+                            Pic = Pic + "," + photo;
+                        }
+                    } catch (Exception e) {
+                        e.printStackTrace();
                     }
                 }
-                map.put("repairsPic", Pic);
+                map.put("ViolationPic", Pic);
                 JSONObject json = (JSONObject) JSONObject.toJSON(map);
                 request(json.toJSONString());
             } else {
@@ -135,8 +140,7 @@ public class IllegaReportActivity extends BaseActivity {
                     @Override
                     public void onSuccess(String s, Call call, Response response) {
                         LoadingDialog.closeDialog();
-                        JSONObject json = JSONObject.parseObject(s);
-                        ToastUtils.showShort(json.getString("msg"));
+                        ResultDialog(JSONObject.parseObject(s).getString("msg"));
                     }
 
                     @Override
@@ -148,16 +152,19 @@ public class IllegaReportActivity extends BaseActivity {
                 });
     }
 
-
     public ClearEditText IfNull() {
         edList.add(name);
-        edList.add(phone);
         edList.add(address);
         edList.add(count);
         for (int i = 0; i < edList.size(); i++) {
             if (edList.get(i).getText().toString().equals("")) return edList.get(i);
         }
         return null;
+    }
+
+    @OnClick(R.id.jubao_sub)
+    public void onViewClicked() {
+        sumbit();
     }
 
     private void dialog(final int i) {
@@ -181,8 +188,17 @@ public class IllegaReportActivity extends BaseActivity {
         builder.create().show();
     }
 
-    @OnClick(R.id.jubao_sub)
-    public void onViewClicked() {
-        sumbit();
+    private void ResultDialog(String msg) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setMessage(msg);
+        builder.setTitle("提交结果");
+        builder.setPositiveButton("确认", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                finish();
+            }
+        });
+        builder.create().show();
     }
+
 }

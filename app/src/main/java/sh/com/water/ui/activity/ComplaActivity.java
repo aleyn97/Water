@@ -32,6 +32,7 @@ import sh.com.water.R;
 import sh.com.water.adapter.PhotoAdapter;
 import sh.com.water.common.BaseActivity;
 import sh.com.water.common.ServerConfig;
+import sh.com.water.ui.MyApplication;
 import sh.com.water.utils.ClearEditText;
 import sh.com.water.utils.ImageDeal;
 import sh.com.water.utils.LoadingDialog;
@@ -39,11 +40,8 @@ import sh.com.water.utils.LoadingDialog;
 public class ComplaActivity extends BaseActivity {
     public static final int IMAGE_PICKER = 1004;
 
-    LoadingDialog dialog;
     @BindView(R.id.tousu_name)
     ClearEditText tousuName;
-    @BindView(R.id.tousu_phone)
-    ClearEditText tousuPhone;
     @BindView(R.id.tousu_address)
     ClearEditText tousuAddress;
     @BindView(R.id.tousu_input_explain)
@@ -55,6 +53,7 @@ public class ComplaActivity extends BaseActivity {
     private List<EditText> edList = new ArrayList<>();
     private PhotoAdapter adapter;
     JSONObject json;
+    MyApplication app;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -66,7 +65,7 @@ public class ComplaActivity extends BaseActivity {
     }
 
     private void initData() {
-        dialog = new LoadingDialog(this);
+        app = (MyApplication) getApplication();
         adapter = new PhotoAdapter(mList, this, tousuGridView);
         tousuGridView.setAdapter(adapter);
         tousuGridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -107,15 +106,21 @@ public class ComplaActivity extends BaseActivity {
             if (mList.size() > 0) {
                 Map<String, String> map = new HashMap<>();
                 map.put("ComplaintsName", tousuName.getText().toString());
-                map.put("ComplaintsPhone", tousuPhone.getText().toString());
+                map.put("ComplaintsPhone", app.getUsername());
                 map.put("ComplaintsContent", tousuInputExplain.getText().toString());
                 String Pic = "";
                 for (int i = 0; i < mList.size(); i++) {
-                    if (Pic.equals("")) {
-                        Pic = ImageDeal.convertIconToString(BitmapFactory.decodeFile(mList.get(i).path));
-                    } else {
-                        Pic = Pic + "," + ImageDeal.convertIconToString(BitmapFactory.decodeFile(mList.get(i).path));
+                    try {
+                        String photo = ImageDeal.encodeBase64File(mList.get(i).path);
+                        if (Pic.equals("")) {
+                            Pic = photo;
+                        } else {
+                            Pic = Pic + "," + photo;
+                        }
+                    } catch (Exception e) {
+                        e.printStackTrace();
                     }
+
                 }
                 map.put("ComplaintsPic", Pic);
                 json = (JSONObject) JSONObject.toJSON(map);
@@ -131,7 +136,6 @@ public class ComplaActivity extends BaseActivity {
 
     private EditText IfNull() {
         edList.add(tousuName);
-        edList.add(tousuPhone);
         edList.add(tousuInputExplain);
         edList.add(tousuAddress);
         for (int i = 0; i < edList.size(); i++) {
@@ -141,22 +145,21 @@ public class ComplaActivity extends BaseActivity {
     }
 
     private void request(String Json) {
-        dialog.setMessage("正在提交").show();
+        LoadingDialog.createLoadingDialog(this, "正在提交...");
         OkHttpUtils
                 .post(ServerConfig.JIAN_YI)
                 .upJson(Json)
                 .execute(new StringCallback() {
                     @Override
                     public void onSuccess(String s, Call call, Response response) {
-                        dialog.dismiss();
-                        json = JSONObject.parseObject(s);
-                        ToastUtils.showShort(json.getString("msg"));
+                        LoadingDialog.closeDialog();
+                        ResultDialog(JSONObject.parseObject(s).getString("msg"));
                     }
 
                     @Override
                     public void onError(Call call, Response response, Exception e) {
                         super.onError(call, response, e);
-                        dialog.dismiss();
+                        LoadingDialog.closeDialog();
                         ToastUtils.showShort("服务器或网络异常");
                     }
                 });
@@ -178,6 +181,19 @@ public class ComplaActivity extends BaseActivity {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 dialog.dismiss();
+            }
+        });
+        builder.create().show();
+    }
+
+    private void ResultDialog(String msg) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setMessage(msg);
+        builder.setTitle("提交结果");
+        builder.setPositiveButton("确认", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                finish();
             }
         });
         builder.create().show();
